@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.SystemUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -127,6 +128,16 @@ public class Controller {
                 }else if (rdo_phone.isSelected()) {
                     checkArray.add("810" + row.select("td").get(2).text().replace("-", "").replace("\u00a0", ""));
                 }
+            }
+
+            for (int i = 0; i < checkArray.size(); i ++) {
+                String item = checkArray.get(i).toLowerCase();
+                if (rdo_name.isSelected()) {
+                    int loc = item.indexOf(" ");
+                    item = item.substring(0, 1).toUpperCase() + item.substring(1, loc).toLowerCase() + " " +
+                            item.substring(loc + 1, loc + 2).toUpperCase() + item.substring(loc + 2).toLowerCase();
+                }
+                System.out.println("<item>" + item + "</item>");
             }
 
             return checkArray;
