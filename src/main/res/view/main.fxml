@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: linear-gradient(#C0C0C0, #666666);" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grandblanchs.staffchecker.Controller">
+    <top>
+        <VBox BorderPane.alignment="CENTER">
+            <HBox spacing="16.0">
+                <VBox.margin>
+                    <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                </VBox.margin>
+            <RadioButton fx:id="rdo_name" mnemonicParsing="false" text="Names" />
+            <RadioButton fx:id="rdo_email" mnemonicParsing="false" text="Emails" />
+            <RadioButton fx:id="rdo_phone" mnemonicParsing="false" text="Phone Numbers" />
+            </HBox>
+        </VBox>
+    </top>
+   <center>
+        <VBox BorderPane.alignment="CENTER">
+            <TextArea fx:id="txt_input" promptText="Enter array to test" style="-fx-background-color: #E3E3E3;" stylesheets="@../style/bobcat.css" wrapText="true">
+                <BorderPane.margin>
+                    <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                </BorderPane.margin>
+            </TextArea>
+         <BorderPane.margin>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+         </BorderPane.margin>
+        </VBox>
+   </center>
+   <bottom>
+        <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0" top="10.0" />
+            </BorderPane.margin>
+            <Button fx:id="btn_check" defaultButton="true" mnemonicParsing="false" onAction="#check" style="-fx-background-color: #A60A0A; -fx-border-color: #FFFFFF;" text="Check" textFill="WHITE">
+                <HBox.margin>
+                    <Insets left="10.0" />
+                </HBox.margin>
+            </Button>
+        </HBox>
+   </bottom>
+</BorderPane>
