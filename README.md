@@ -1,2 +1,2 @@
 # GBHS-StaffChecker
-A tool used by GBHS App devs to update the staff listing.
+A GUI tool used to update staff listing on GBHS apps.
