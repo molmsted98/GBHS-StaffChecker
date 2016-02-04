@@ -116,28 +116,36 @@ public class Controller {
 
             Element table = staff.select("table").last();
             Elements rows = table.select("tr");
-
+            int loc;
             for (int i = 3; i < rows.size(); i++) {  //Skip first three rows
                 Element row = rows.get(i);
                 if (rdo_name.isSelected()) {
                     checkArray.add(row.select("td").get(0).text());
                 }else if (rdo_email.isSelected()) {
                     checkArray.add(StringUtils.substringBetween(
-                            row.select("td").get(1).toString().toUpperCase(), "MAILTO:", "\">"));
+                            row.select("td").get(0).toString().toLowerCase(), "mailto:", ".org") + ".org");
                     System.out.println(checkArray.get(checkArray.size() - 1));
                 }else if (rdo_phone.isSelected()) {
                     checkArray.add("810" + row.select("td").get(2).text().replace("-", "").replace("\u00a0", ""));
                 }
             }
 
-            for (int i = 0; i < checkArray.size(); i ++) {
-                String item = checkArray.get(i).toLowerCase();
-                if (rdo_name.isSelected()) {
-                    int loc = item.indexOf(" ");
-                    item = item.substring(0, 1).toUpperCase() + item.substring(1, loc).toLowerCase() + " " +
-                            item.substring(loc + 1, loc + 2).toUpperCase() + item.substring(loc + 2).toLowerCase();
+            for (String item: checkArray) {
+                try {
+                    item = item.toLowerCase();
+                    if (rdo_name.isSelected()) {
+                        loc = item.indexOf(" ");
+                        item = item.substring(0, 1).toUpperCase() + item.substring(1, loc).toLowerCase() + " " +
+                                item.substring(loc + 1, loc + 2).toUpperCase() + item.substring(loc + 2).toLowerCase();
+                    }
+                    else if (rdo_email.isSelected()) {
+                        item += ".org";
+                    }
+                    System.out.println("<item>" + item + "</item>");
+                }catch (NullPointerException e){
+                    e.printStackTrace();
+                    System.out.println("MISSING");
                 }
-                System.out.println("<item>" + item + "</item>");
             }
 
             return checkArray;
